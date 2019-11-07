@@ -23,7 +23,7 @@ Store Number:<br>
 <li><a href="javascript:networkissue()">Network Issue</a></li>
 <li><a href="javascript:cashregister()">Cash Register</a></li>
 <li><a href="javascript:pinpad()">Pinpad / Card Issue</a></li>
-<li><a href="javascript:loginErrExample()">Gas Pump Down</a></li>
+<li><a href="javascript:gaspump()">Gas Pump Down</a></li>
 <li><a href="javascript:loginErrExample()">Ice Machine Down</a></li>
 <li><a href="javascript:loginErrExample()">Water Leak</a></li>
 <li><a href="javascript:loginErrExample()">Coffee Issue</a></li>
@@ -36,12 +36,12 @@ Store Number:<br>
 
 <script>
         function slurpee() {
-		
+
 		  var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-		  
+
           var eventObject = '{ ' +
               ' "client_url": "https://www.7-eleven.com", ' +
               ' "service_key"\: "' + serviceKey + '", ' +
@@ -73,13 +73,13 @@ Store Number:<br>
           ' }, ' +
         ' "description": "[Franchise Alert] Slurpee Machine Down" ' +
         '}'
-       
+
         console.log(eventObject)
 
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject, 
+            data: eventObject,
             success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
@@ -92,12 +92,12 @@ Store Number:<br>
 
 <script>
         function networkissue() {
-		
+
 		  var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-		  
+
           var eventObject = '{ ' +
               ' "client_url": "https://www.7-eleven.com", ' +
               ' "service_key"\: "' + serviceKey + '", ' +
@@ -129,13 +129,13 @@ Store Number:<br>
           ' }, ' +
         ' "description": "[Franchise Alert] Network Issue" ' +
         '}'
-       
+
         console.log(eventObject)
 
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject, 
+            data: eventObject,
             success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
@@ -145,15 +145,15 @@ Store Number:<br>
           return false;
         }
         </script>
-		
+
 		<script>
         function cashregister() {
-           
+
           var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-		  
+
           var eventObject = '{ ' +
               ' "client_url": "https://www.7-eleven.com", ' +
               ' "service_key"\: "' + serviceKey + '", ' +
@@ -185,13 +185,13 @@ Store Number:<br>
           ' }, ' +
         ' "description": "[Franchise Alert] Cash Register Down" ' +
         '}'
-       
+
         console.log(eventObject)
 
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject, 
+            data: eventObject,
             success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
@@ -202,15 +202,15 @@ Store Number:<br>
           return false;
         }
         </script>
-		
+
 		<script>
         function pinpad() {
-           
+
           var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-		  
+
           var eventObject = '{ ' +
               ' "client_url": "https://www.7-eleven.com", ' +
               ' "service_key"\: "' + serviceKey + '", ' +
@@ -242,13 +242,13 @@ Store Number:<br>
           ' }, ' +
         ' "description": "[Franchise Alert] Pinpad Issue" ' +
         '}'
-       
+
         console.log(eventObject)
 
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject, 
+            data: eventObject,
             success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
@@ -257,6 +257,64 @@ Store Number:<br>
           window.prompt('Confirm Store ID.')
 		  alert('Pinpad Issue Reported. ')
           return false;
-		  
+
         }
         </script>
+
+        <script>
+            function gaspump() {
+
+              var serviceKey = "25c7766eede1452ca427a2cd12a6d457";
+              var date = new Date();
+              customerName = "dhuggins@pagerduty.com";
+              dedupKey = customerName + date.getMinutes() + date.getSeconds();
+
+              var eventObject = '{ ' +
+                  ' "client_url": "https://www.7-eleven.com", ' +
+                  ' "service_key"\: "' + serviceKey + '", ' +
+                  ' "incident_key"\: "' + dedupKey + '", ' +
+                  ' "client"\: "7-Eleven Store Support", ' +
+                  ' "vendor"\: "7-Eleven Store Support", ' +
+                  ' "event_type"\: "trigger", ' +
+                  ' "contexts"\: [ ' +
+                  ' {  ' +
+                      ' "src": "https://s3-media2.fl.yelpcdn.com/bphoto/mEqBIQ7m0bSTRRbsbYcrjw/o.jpg", ' +
+                      ' "alt": "register", ' +
+                      ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
+                      ' "type": "image" ' +
+                  ' }, ' +
+              '{ ' +
+              ' "text": "Store ID", ' +
+              '  "href": "https://www.7-eleven.com/locator", ' +
+              '  "type": "link" ' +
+              ' } ' +
+              ' ], ' +
+            ' "details": { ' +
+              ' "body": "[Franchise Alert] Gas Pump Issue" , ' +
+              ' "Order Value": "$500", ' +
+              ' "priority": "High", ' +
+              ' "title": "[Franchise Alert] Gas Pump Issue", ' +
+              ' "event_id": "8125363154448140714", ' +
+              ' "tags": "7-Eleven, slurpee, store", ' +
+              ' "Customer": "'+ customerName + '" ' +
+              ' }, ' +
+            ' "description": "[Franchise Alert] Gas Pump Issue" ' +
+            '}'
+
+            console.log(eventObject)
+
+              $.ajax({
+                method: "POST",
+                url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                data: eventObject,
+                success:function(resp){console.log(JSON.stringify(resp));}
+              })
+                .done(function( msg ) {
+              });
+
+              window.prompt('Confirm Store ID.')
+    		  alert('Gas Pump Issue Reported. ')
+              return false;
+
+            }
+            </script>
