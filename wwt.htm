@@ -256,6 +256,14 @@ document.getElementsByClassName("tablink")[0].click();
             .done(function( msg ) {
              // alert( "Hello: " + msg );
           });
+          $.ajax({
+            method: "GET",
+            url: "https://event-sender.herokuapp.com/ondemand/5543c7c5-2855-44dd-b632-c61bb9a0ef14",
+            success:function(resp){}
+          })
+            .done(function( msg ) {
+             // alert( "Hello: " + msg );
+          });
 
           alert('Error logging into WWT Core Services.')
           return false;
