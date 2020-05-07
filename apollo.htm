@@ -309,37 +309,6 @@ document.getElementsByClassName("tablink")[0].click();
        // alert('part 1 ' + eventObject);
         console.log(eventObject)
 
-       // alert('Part 2 ' + eventObject);
-        //    ' "Customer Name": ' + customerName + ', ' +
-          //var settings = {
-          //  "url": "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-          //  "method": "POST",
-          //  "data":  eventObject,
-          //  "headers": {
-          //    "Accept": "application/vnd.pagerduty+json;version=2",
-          //    "Authorization": "Token token=25c7766eede1452ca427a2cd12a6d457",
-          //  }
-          //};
-          //$.ajax(settings).done(function (response) {
-          //  console.log(response);
-          //  $("#responseText").text(JSON.stringify(response));
-          //});
-          //$.ajax({
-          //  type: "POST",
-          //  url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-          //  data: eventObject,
-          //  success: null,
-          //  dataType: "json"
-          //});
-          $.ajax({
-            method: "POST",
-            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject,
-            success:function(resp){console.log(JSON.stringify(resp));}
-          })
-            .done(function( msg ) {
-             // alert( "Hello: " + msg );
-          });
           $.ajax({
                       method: "GET",
                       url: "https://event-sender.herokuapp.com/ondemand/5543c7c5-2855-44dd-b632-c61bb9a0ef14",
@@ -348,6 +317,16 @@ document.getElementsByClassName("tablink")[0].click();
                       .done(function( msg ) {
                        // alert( "Hello: " + msg );
                     });
+          $.ajax({
+                      method: "POST",
+                      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+                      data: eventObject,
+                      success:function(resp){console.log(JSON.stringify(resp));}
+                    })
+                      .done(function( msg ) {
+                       // alert( "Hello: " + msg );
+                    });
+
           alert('Error connecting to Apollo Gaming Core Services.')
           return false;
 
