@@ -317,15 +317,15 @@ document.getElementsByClassName("tablink")[0].click();
                       .done(function( msg ) {
                        // alert( "Hello: " + msg );
                     });
-          $.ajax({
-                      method: "POST",
-                      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-                      data: eventObject,
-                      success:function(resp){console.log(JSON.stringify(resp));}
-                    })
-                      .done(function( msg ) {
-                       // alert( "Hello: " + msg );
-                    });
+//          $.ajax({
+//                      method: "POST",
+//                      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+//                      data: eventObject,
+//                      success:function(resp){console.log(JSON.stringify(resp));}
+//                    })
+//                      .done(function( msg ) {
+//                       // alert( "Hello: " + msg );
+//                    });
 
           alert('Error connecting to Apollo Gaming Core Services.')
           return false;
