@@ -137,7 +137,7 @@ document.getElementsByClassName("tablink")[0].click();
         function loginErrExample() {
             //alert('In loginErrExample');
           var serviceKey = getParameterByName('service_key');
-          if (!serviceKey) serviceKey = "62cc79716eeb4d1fbaa1950e67cde29a"; /*ML service key*/
+          if (!serviceKey) serviceKey = "25c7766eede1452ca427a2cd12a6d457"; /*ML service key*/
          /* var x = document.getElementById("checkoutError");
           x.style.display = "none";
           document.getElementById("checkoutButton").innerHTML = "Working";*/
@@ -167,11 +167,25 @@ document.getElementsByClassName("tablink")[0].click();
                   ' "href": "https://s14.postimg.org/knuvhigz5/NRErrors2.png", ' +
                   ' "type": "image" ' +
               ' }, ' +
+
+			  ' { ' +
+              ' "text": "Status Dashboard", ' +
+              ' "href": "https://pdt-huggins.pagerduty.com/status-dashboard", ' +
+              ' "type": "link" ' +
+              ' }, ' +
+
+			  '{' +
+			  ' "text": "PagerDuty Postmortem", ' +
+              ' "href": "https://pdt-huggins.pagerduty.com/postmortems/15b29bd8-81ce-48dc-8104-31117484df88", ' +
+              ' "type": "link" ' +
+			  '},' +
+
               ' { ' +
               ' "text": "Conference URL (Zoom)", ' +
               ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
               ' "type": "link" ' +
               ' }, ' +
+
             '{' +
             '  "text": "Conference Dial (Zoom)",  ' +
             '  "href": "tel:+442036950088,,5080555253#",  ' +
@@ -189,18 +203,152 @@ document.getElementsByClassName("tablink")[0].click();
           ' } ' +
           ' ], ' +
         ' "details": { ' +
-          ' "body": "[Critical] API500 errors across search engines, High Error rates <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+          ' "body": "[Critical] Unexpected server response detected on the Live Core Service, High Error rates <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
           ' "Order Value": ' + orderValue + ', ' +
           ' "priority": "High", ' +
-          ' "title": "[Critical] API500 errors across search engines, High Error rates", ' +
+          ' "title": "[Critical] Unexpected server response detected on the Live Core Service, High Error rates", ' +
           ' "event_id": "8125363154448140714", ' +
           ' "tags": "aws-prod, base, env:prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
           ' "Customer": "'+ customerName + '" ' +
           ' }, ' +
-        ' "description": "[Critical] API500 errors across product search engine, High Error rates" ' +
+        ' "description": "[Critical] Live Core Service Failure: unexpected server response" ' +
         '}'
        // alert('part 1 ' + eventObject);
         console.log(eventObject)
+
+          $.ajax({
+                      method: "GET",
+                      url: "https://event-sender.herokuapp.com/ondemand/5543c7c5-2855-44dd-b632-c61bb9a0ef14",
+                      success:function(resp){}
+                    })
+                      .done(function( msg ) {
+                       // alert( "Hello: " + msg );
+                    });
+//          $.ajax({
+//                      method: "POST",
+//                      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+//                      data: eventObject,
+//                      success:function(resp){console.log(JSON.stringify(resp));}
+//                    })
+//                      .done(function( msg ) {
+//                       // alert( "Hello: " + msg );
+//                    });
+
+          alert('Server Exception Error connecting.')
+          return false;
+
+        }
+        </script>
+
+<!--2nd Incident-->
+<script>
+        function guid() {
+          function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+              .toString(16)
+              .substring(1);
+          }
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+        }
+        function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        /*function updateResponsePanel()
+        {
+          var x = document.getElementById("checkoutError");
+          x.style.display = "block";
+          document.getElementById("checkoutButton").innerHTML = "Checkout";
+        }*/
+        function joinErrExample() {
+            //alert('In loginErrExample');
+          var serviceKey = getParameterByName('service_key');
+          if (!serviceKey) serviceKey = "8e700ffee976469b84620b98f631d23e"; /*ML service key*/
+         /* var x = document.getElementById("checkoutError");
+          x.style.display = "none";
+          document.getElementById("checkoutButton").innerHTML = "Working";*/
+          //setTimeout(updateResponsePanel, 4000);
+          /*var node = document.getElementById('cart-total'),
+          orderValue = node.innerHTML
+          node = document.getElementById('customer-name'),
+          customerName = node.value*/
+          //Deprecated guid()
+          var date = new Date();
+          customerName = "dhuggins@pagerduty.com";
+          dedupKey = customerName + date.getMinutes() + date.getSeconds();
+         // alert (customerName);
+          var orderValue = '0';
+          // Requires jQuery
+          var eventObject = '{ ' +
+              ' "client_url": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+              ' "service_key"\: "' + serviceKey + '", ' +
+              ' "incident_key"\: "' + dedupKey + '", ' +
+              ' "client"\: "Datadog", ' +
+              ' "vendor"\: "Datadog", ' +
+              ' "event_type"\: "trigger", ' +
+              ' "contexts"\: [ ' +
+     //         ' {  ' +
+     //             ' "src": "https://app.datadoghq.com/graph/embed?token=646fa8cbd95cbd0ab05ae2f2cd74cebdd57dc256f1fa4610e1272ef1c49c33bc&height=300&width=600&legend=true", ' +
+     //             ' "alt": "Snapshot of metric", ' +
+     //             ' "href": "https://app.datadoghq.com/graph/embed?token=646fa8cbd95cbd0ab05ae2f2cd74cebdd57dc256f1fa4610e1272ef1c49c33bc&height=300&width=600&legend=true", ' +
+     //             ' "type": "image" ' +
+     //         ' }, ' +
+
+			  ' { ' +
+              ' "text": "Status Dashboard", ' +
+              ' "href": "https://pdt-huggins.pagerduty.com/status-dashboard", ' +
+              ' "type": "link" ' +
+              ' }, ' +
+
+			  '{' +
+			  ' "text": "PagerDuty Postmortem", ' +
+              ' "href": "https://pdt-huggins.pagerduty.com/postmortems/15b29bd8-81ce-48dc-8104-31117484df88", ' +
+              ' "type": "link" ' +
+			  '},' +
+
+
+              ' { ' +
+              ' "text": "Conference URL (Zoom)", ' +
+              ' "href": "https://pagerduty.zoom.us/j/5080555253", ' +
+              ' "type": "link" ' +
+              ' }, ' +
+
+            '{' +
+            '  "text": "Conference Dial (Zoom)",  ' +
+            '  "href": "tel:+442036950088,,5080555253#",  ' +
+            '  "type": "link"  ' +
+            '},' +
+          '{' +
+            ' "text": "Monitor Status", ' +
+            ' "href": "https://appp.datadoghq.com/monitors#72563?to_ts=1452282540000&group=host%3Aprod-web-xdb09&from_ts=1452281340000", ' +
+            ' "type": "link" ' +
+          '},' +
+          '{ ' +
+          ' "text": "Triggered Monitors", ' +
+          '  "href": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
+          '  "type": "link" ' +
+          ' } ' +
+          ' ], ' +
+        ' "details": { ' +
+          ' "body": "[Major] Unexpected database response detected on the Live Core Service, High Error rates <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
+          ' "Order Value": ' + orderValue + ', ' +
+          ' "priority": "High", ' +
+          ' "title": "[Major] Unexpected database response detected on the Live Core Service, High Error rates", ' +
+          ' "event_id": "8125363154448140714", ' +
+          ' "tags": "aws-prod, base, env:prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
+          ' "Customer": "'+ customerName + '" ' +
+          ' }, ' +
+        ' "description": "[Major] Live Core Service Failure: unexpected database response" ' +
+        '}'
+       // alert('part 1 ' + eventObject);
+        console.log(eventObject)
+
        // alert('Part 2 ' + eventObject);
         //    ' "Customer Name": ' + customerName + ', ' +
           //var settings = {
@@ -209,7 +357,7 @@ document.getElementsByClassName("tablink")[0].click();
           //  "data":  eventObject,
           //  "headers": {
           //    "Accept": "application/vnd.pagerduty+json;version=2",
-          //    "Authorization": "Token token=62cc79716eeb4d1fbaa1950e67cde29a",
+          //    "Authorization": "Token token=25c7766eede1452ca427a2cd12a6d457",
           //  }
           //};
           //$.ajax(settings).done(function (response) {
@@ -226,13 +374,20 @@ document.getElementsByClassName("tablink")[0].click();
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-            data: eventObject
+            data: eventObject,
+            success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
              // alert( "Hello: " + msg );
           });
-          alert('Member Login Exception Error')
+
+          alert('db12985 Error - database unavailable. Please call the Support Desk on +1817-440-3544')
           return false;
+
+
+			//Test to trigger 2nd Incident
+
+		  //end of added test
         }
         </script>
 
