@@ -148,7 +148,7 @@ document.getElementsByClassName("tablink")[0].click();
           customerName = node.value*/
           //Deprecated guid()
           var date = new Date();
-          customerName = "dhuggins@pagerduty.com";
+          customerName = "ncastle@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
          // alert (customerName);
           var orderValue = '0';
@@ -280,7 +280,7 @@ document.getElementsByClassName("tablink")[0].click();
           customerName = node.value*/
           //Deprecated guid()
           var date = new Date();
-          customerName = "dhuggins@pagerduty.com";
+          customerName = "ncastle@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
          // alert (customerName);
           var orderValue = '0';
@@ -339,12 +339,12 @@ document.getElementsByClassName("tablink")[0].click();
           ' "body": "[Major] Unexpected database response detected on the NetJets Database Service, High Error rates <br/> Object Reference Not Set and ADO.NET Connection pool exceeded errors detected" , ' +
           ' "Order Value": ' + orderValue + ', ' +
           ' "priority": "High", ' +
-          ' "title": "[Major] Unexpected database response detected on the Live Core Service, High Error rates", ' +
+          ' "title": "[Major] Unexpected database response detected on the NetJets Database Service, High Error rates", ' +
           ' "event_id": "8125363154448140714", ' +
           ' "tags": "aws-prod, base, env:prod, host:farnsworth, monitor, pd_az:us-west-2c, production, xdb, xtradb", ' +
           ' "Customer": "'+ customerName + '" ' +
           ' }, ' +
-        ' "description": "[Major] Live Core Service Failure: unexpected database response" ' +
+        ' "description": "[Major] NetJets Database Service Failure: unexpected database response" ' +
         '}'
        // alert('part 1 ' + eventObject);
         console.log(eventObject)
@@ -381,7 +381,7 @@ document.getElementsByClassName("tablink")[0].click();
              // alert( "Hello: " + msg );
           });
 
-          alert('db12985 Error - database unavailable. Please call the Support Desk on +1256-474-8792')
+          alert('db12985 Error - database unavailable. Please call the Support Desk on +1-256-474-8792')
           return false;
 
 
