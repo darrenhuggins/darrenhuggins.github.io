@@ -249,7 +249,7 @@ document.getElementsByClassName("tablink")[0].click();
           //});
           $.ajax({
             method: "POST",
-            url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
+            url: "https://event-sender.herokuapp.com/ondemand/5543c7c5-2855-44dd-b632-c61bb9a0ef14",
             data: eventObject,
             success:function(resp){console.log(JSON.stringify(resp));}
           })
