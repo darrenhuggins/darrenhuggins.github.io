@@ -120,31 +120,13 @@ document.getElementsByClassName("tablink")[0].click();
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        /*function updateResponsePanel()
-        {
-          var x = document.getElementById("checkoutError");
-          x.style.display = "block";
-          document.getElementById("checkoutButton").innerHTML = "Checkout";
-        }*/
         function loginErrExample() {
-            //alert('In loginErrExample');
           var serviceKey = getParameterByName('service_key');
           if (!serviceKey) serviceKey = "25c7766eede1452ca427a2cd12a6d457"; /*ML service key*/
-         /* var x = document.getElementById("checkoutError");
-          x.style.display = "none";
-          document.getElementById("checkoutButton").innerHTML = "Working";*/
-          //setTimeout(updateResponsePanel, 4000);
-          /*var node = document.getElementById('cart-total'),
-          orderValue = node.innerHTML
-          node = document.getElementById('customer-name'),
-          customerName = node.value*/
-          //Deprecated guid()
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-         // alert (customerName);
           var orderValue = '0';
-          // Requires jQuery
           var eventObject = '{ ' +
               ' "client_url": "https://rpm.newrelic.com/accounts/1818495/applications/105833762", ' +
               ' "service_key"\: "' + serviceKey + '", ' +
@@ -205,7 +187,6 @@ document.getElementsByClassName("tablink")[0].click();
           ' }, ' +
         ' "description": "[Critical] Live Core Service Failure: unexpected server response" ' +
         '}'
-       // alert('part 1 ' + eventObject);
         console.log(eventObject)
 
           $.ajax({
@@ -214,17 +195,7 @@ document.getElementsByClassName("tablink")[0].click();
                       success:function(resp){}
                     })
                       .done(function( msg ) {
-                       // alert( "Hello: " + msg );
                     });
-//          $.ajax({
-//                      method: "POST",
-//                      url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-//                      data: eventObject,
-//                      success:function(resp){console.log(JSON.stringify(resp));}
-//                    })
-//                      .done(function( msg ) {
-//                       // alert( "Hello: " + msg );
-//                    });
 
           alert('Error connecting to Toyota Gaming Core Services.')
           return false;
@@ -252,29 +223,12 @@ document.getElementsByClassName("tablink")[0].click();
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        /*function updateResponsePanel()
-        {
-          var x = document.getElementById("checkoutError");
-          x.style.display = "block";
-          document.getElementById("checkoutButton").innerHTML = "Checkout";
-        }*/
         function joinErrExample() {
-            //alert('In loginErrExample');
           var serviceKey = getParameterByName('service_key');
           if (!serviceKey) serviceKey = "8e700ffee976469b84620b98f631d23e"; /*ML service key*/
-         /* var x = document.getElementById("checkoutError");
-          x.style.display = "none";
-          document.getElementById("checkoutButton").innerHTML = "Working";*/
-          //setTimeout(updateResponsePanel, 4000);
-          /*var node = document.getElementById('cart-total'),
-          orderValue = node.innerHTML
-          node = document.getElementById('customer-name'),
-          customerName = node.value*/
-          //Deprecated guid()
           var date = new Date();
           customerName = "dhuggins@pagerduty.com";
           dedupKey = customerName + date.getMinutes() + date.getSeconds();
-         // alert (customerName);
           var orderValue = '0';
           // Requires jQuery
           var eventObject = '{ ' +
@@ -285,12 +239,7 @@ document.getElementsByClassName("tablink")[0].click();
               ' "vendor"\: "Datadog", ' +
               ' "event_type"\: "trigger", ' +
               ' "contexts"\: [ ' +
-     //         ' {  ' +
-     //             ' "src": "https://app.datadoghq.com/graph/embed?token=646fa8cbd95cbd0ab05ae2f2cd74cebdd57dc256f1fa4610e1272ef1c49c33bc&height=300&width=600&legend=true", ' +
-     //             ' "alt": "Snapshot of metric", ' +
-     //             ' "href": "https://app.datadoghq.com/graph/embed?token=646fa8cbd95cbd0ab05ae2f2cd74cebdd57dc256f1fa4610e1272ef1c49c33bc&height=300&width=600&legend=true", ' +
-     //             ' "type": "image" ' +
-     //         ' }, ' +
+        ' }, ' +
 
 			  ' { ' +
               ' "text": "Status Dashboard", ' +
@@ -338,31 +287,10 @@ document.getElementsByClassName("tablink")[0].click();
           ' }, ' +
         ' "description": "[Major] Live Core Service Failure: unexpected database response" ' +
         '}'
-       // alert('part 1 ' + eventObject);
+       
         console.log(eventObject)
 
-       // alert('Part 2 ' + eventObject);
-        //    ' "Customer Name": ' + customerName + ', ' +
-          //var settings = {
-          //  "url": "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-          //  "method": "POST",
-          //  "data":  eventObject,
-          //  "headers": {
-          //    "Accept": "application/vnd.pagerduty+json;version=2",
-          //    "Authorization": "Token token=25c7766eede1452ca427a2cd12a6d457",
-          //  }
-          //};
-          //$.ajax(settings).done(function (response) {
-          //  console.log(response);
-          //  $("#responseText").text(JSON.stringify(response));
-          //});
-          //$.ajax({
-          //  type: "POST",
-          //  url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
-          //  data: eventObject,
-          //  success: null,
-          //  dataType: "json"
-          //});
+       
           $.ajax({
             method: "POST",
             url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",
@@ -370,7 +298,7 @@ document.getElementsByClassName("tablink")[0].click();
             success:function(resp){console.log(JSON.stringify(resp));}
           })
             .done(function( msg ) {
-             // alert( "Hello: " + msg );
+        
           });
 
           alert('Error connecting to Toyota Rewards database. Please call the Support Desk on +1817-440-3544')
@@ -379,7 +307,7 @@ document.getElementsByClassName("tablink")[0].click();
 
 			//Test to trigger 2nd Incident
 
-		  //end of added test .........
+		  //end of added test
         }
         </script>
 
