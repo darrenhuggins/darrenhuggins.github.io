@@ -18,8 +18,8 @@
 <li><a href="javascript:forthCruxEvent()">BGP Peer Connection</a></li>
 <li><a href="javascript:fifthCruxEvent()">SCOM Agent Service</a></li>
 <li><a href="javascript:sixthCruxEvent()">SCOM Maximo Storm</a></li>
-<li><a href="javascript:seventhCruxEvent()">To be Configured</a></li>
-<li><a href="javascript:eigthCruxEvent()">To be Configured</a></li>
+<li><a href="javascript:seventhCruxEvent()">Splunk Email LACP</a></li>
+<li><a href="javascript:eigthCruxEvent()">Splunk Email PSU</a></li>
 </ul>
 
 
@@ -122,7 +122,7 @@
         function seventhCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/3878fe8f-c464-4460-aa5c-221d16bb57a7",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
@@ -137,7 +137,7 @@
         function eigthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/d381daa7-a7d6-432c-9ce6-a7522ad4b3bf",
+                url: "https://event-sender.herokuapp.com/ondemand/f688a649-487a-421b-9220-abf7e27a8c86",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
