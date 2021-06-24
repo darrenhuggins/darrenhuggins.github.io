@@ -6,7 +6,7 @@
 */
 
 #tswcssbuttons {
-	width: 180px ;
+	width: 220px ;
 	max-width: 100% ;
 	text-align: center ;
 	}
@@ -38,7 +38,7 @@
 }
 @-ms-viewport { width: device-width ; }
 @viewport { width: device-width ; }
-@media only screen and (max-width:180px) {
+@media only screen and (max-width:220px) {
 	#tswhamburger {
 		display: inline ;
 		width: 2em ;
