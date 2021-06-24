@@ -22,8 +22,8 @@
 <li><a href="javascript:eigthCruxEvent()">Splunk Email PSU</a></li>
 <li><a href="javascript:ninethCruxEvent()">VROPS Link Down</a></li>
 <li><a href="javascript:tenthCruxEvent()">NetApp Volume 95%</a></li>
-<li><a href="javascript:eleventhCruxEvent()">tbc</a></li>
-<li><a href="javascript:twelfthCruxEvent()">tbc</a></li>
+<li><a href="javascript:eleventhCruxEvent()">DCIM Device Alarm</a></li>
+<li><a href="javascript:twelfthCruxEvent()">SiteScan Loss of Comms</a></li>
 </ul>
 
 
@@ -170,7 +170,7 @@
         function tenthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/a5bec69e-7cd7-41fe-82a7-ffee8cfc820f",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
@@ -184,7 +184,7 @@
         function eleventhCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/97d1f54f-11b0-4691-9436-bfae967d1560",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
@@ -199,7 +199,7 @@
         function twelfthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/f688a649-487a-421b-9220-abf7e27a8c86",
+                url: "https://event-sender.herokuapp.com/ondemand/f13b96eb-fb15-4db8-b926-edab8b562265",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
