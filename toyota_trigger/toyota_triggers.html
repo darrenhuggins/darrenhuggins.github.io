@@ -20,8 +20,8 @@
 <li><a href="javascript:sixthCruxEvent()">SCOM Maximo Storm</a></li>
 <li><a href="javascript:seventhCruxEvent()">Splunk Email LACP</a></li>
 <li><a href="javascript:eigthCruxEvent()">Splunk Email PSU</a></li>
-<li><a href="javascript:ninethCruxEvent()">tbc</a></li>
-<li><a href="javascript:tenthCruxEvent()">tbc</a></li>
+<li><a href="javascript:ninethCruxEvent()">VROPS Link Down</a></li>
+<li><a href="javascript:tenthCruxEvent()">NetApp Volume 95%</a></li>
 <li><a href="javascript:eleventhCruxEvent()">tbc</a></li>
 <li><a href="javascript:twelfthCruxEvent()">tbc</a></li>
 </ul>
@@ -141,7 +141,7 @@
         function eigthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/84a78c25-20c1-4fdd-b965-56f1b9a8d098",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
@@ -155,7 +155,7 @@
         function ninethCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/a5bec69e-7cd7-41fe-82a7-ffee8cfc820f",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
