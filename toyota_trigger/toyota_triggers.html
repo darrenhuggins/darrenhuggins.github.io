@@ -15,7 +15,7 @@
 <li><a href="javascript:firstCruxEvent()">Nagios Disk</a></li>
 <li><a href="javascript:secondCruxEvent()">Nagios Packet Loss</a></li>
 <li><a href="javascript:thirdCruxEvent()">Nagios CPU </a></li>
-<li><a href="javascript:forthCruxEvent()">To be Configured</a></li>
+<li><a href="javascript:forthCruxEvent()">BGP Peer Connection</a></li>
 <li><a href="javascript:fifthCruxEvent()">To be Configured</a></li>
 <li><a href="javascript:sixthCruxEvent()">To be Configured</a></li>
 <li><a href="javascript:seventhCruxEvent()">To be Configured</a></li>
@@ -77,7 +77,7 @@
         function forthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/2eef7333-a4d6-4948-91e1-142e10f28fdb",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
