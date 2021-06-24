@@ -20,6 +20,10 @@
 <li><a href="javascript:sixthCruxEvent()">SCOM Maximo Storm</a></li>
 <li><a href="javascript:seventhCruxEvent()">Splunk Email LACP</a></li>
 <li><a href="javascript:eigthCruxEvent()">Splunk Email PSU</a></li>
+<li><a href="javascript:ninethCruxEvent()">tbc</a></li>
+<li><a href="javascript:tenthCruxEvent()">tbc</a></li>
+<li><a href="javascript:eleventhCruxEvent()">tbc</a></li>
+<li><a href="javascript:twelfthCruxEvent()">tbc</a></li>
 </ul>
 
 
@@ -135,6 +139,64 @@
 
         <script>
         function eigthCruxEvent() {
+          $.ajax({
+                method: "GET",
+                url: "https://event-sender.herokuapp.com/ondemand/",
+                   success:function(resp){}
+                 })
+                 .done(function( msg ) {
+                 });
+
+                 alert('Generating Alerts')
+          return url;
+        }
+        </script>
+        <script>
+        function ninethCruxEvent() {
+          $.ajax({
+                method: "GET",
+                url: "https://event-sender.herokuapp.com/ondemand/",
+                   success:function(resp){}
+                 })
+                 .done(function( msg ) {
+                 });
+
+                 alert('Generating Alerts')
+          return url;
+        }
+        </script>
+
+        <script>
+        function tenthCruxEvent() {
+          $.ajax({
+                method: "GET",
+                url: "https://event-sender.herokuapp.com/ondemand/",
+                   success:function(resp){}
+                 })
+                 .done(function( msg ) {
+                 });
+
+                 alert('Generating Alerts')
+          return url;
+        }
+        </script>
+<script>
+        function eleventhCruxEvent() {
+          $.ajax({
+                method: "GET",
+                url: "https://event-sender.herokuapp.com/ondemand/",
+                   success:function(resp){}
+                 })
+                 .done(function( msg ) {
+                 });
+
+                 alert('Generating Alerts')
+          return url;
+        }
+        </script>
+
+        <script>
+        function twelfthCruxEvent() {
           $.ajax({
                 method: "GET",
                 url: "https://event-sender.herokuapp.com/ondemand/f688a649-487a-421b-9220-abf7e27a8c86",
