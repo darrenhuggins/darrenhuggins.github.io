@@ -17,7 +17,7 @@
 <li><a href="javascript:thirdCruxEvent()">Nagios CPU </a></li>
 <li><a href="javascript:forthCruxEvent()">BGP Peer Connection</a></li>
 <li><a href="javascript:fifthCruxEvent()">SCOM Agent Service</a></li>
-<li><a href="javascript:sixthCruxEvent()">To be Configured</a></li>
+<li><a href="javascript:sixthCruxEvent()">SCOM Maximo Storm</a></li>
 <li><a href="javascript:seventhCruxEvent()">To be Configured</a></li>
 <li><a href="javascript:eigthCruxEvent()">To be Configured</a></li>
 </ul>
@@ -108,7 +108,7 @@
         function sixthCruxEvent() {
           $.ajax({
                 method: "GET",
-                url: "https://event-sender.herokuapp.com/ondemand/",
+                url: "https://event-sender.herokuapp.com/ondemand/eefb303d-bb10-44f6-857e-dba33091a000",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
