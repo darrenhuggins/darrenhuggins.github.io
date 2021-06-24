@@ -23,7 +23,9 @@
 <li><a href="javascript:ninethCruxEvent()">VROPS Link Down</a></li>
 <li><a href="javascript:tenthCruxEvent()">NetApp Volume 95%</a></li>
 <li><a href="javascript:eleventhCruxEvent()">DCIM Device Alarm</a></li>
-<li><a href="javascript:twelfthCruxEvent()">SiteScan Loss of Comms</a></li>
+<li><a href="javascript:twelfthCruxEvent()">SiteScan Loss of Communication</a></li>
+<li><a href="javascript:thirteenthCruxEvent()">ALL EVENTS - MASS STORM</a></li>
+
 </ul>
 
 
@@ -200,6 +202,20 @@
           $.ajax({
                 method: "GET",
                 url: "https://event-sender.herokuapp.com/ondemand/f13b96eb-fb15-4db8-b926-edab8b562265",
+                   success:function(resp){}
+                 })
+                 .done(function( msg ) {
+                 });
+
+                 alert('Generating Alerts')
+          return url;
+        }
+        </script>
+        <script>
+        function twelfthCruxEvent() {
+          $.ajax({
+                method: "GET",
+                url: "https://event-sender.herokuapp.com/ondemand/7f465d39-3513-4e43-95dc-9de7dc89451e",
                    success:function(resp){}
                  })
                  .done(function( msg ) {
