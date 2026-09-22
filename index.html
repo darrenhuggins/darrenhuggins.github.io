@@ -271,7 +271,15 @@ Name: <input type="text" name="customerName" id="customer-name" value="Stephanie
       data: eventObject
     })
       .done(function( msg ) {
-        //alert( "Data Saved: " + msg );
+        // Pendo Track: demo checkout flow completed and PagerDuty incident triggered
+        if (typeof pendo !== 'undefined') {
+          pendo.track("demo_checkout_completed", {
+            customer_name: customerName || "",
+            order_value: orderValue || "",
+            dedup_key: dedupKey ? dedupKey.substring(0, 8) + "***" : "",
+            demo_site: "bestbuy"
+          });
+        }
     });
 
 

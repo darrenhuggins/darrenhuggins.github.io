@@ -25,6 +25,20 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     UsersJSON2CSV(xmlhttp.responseText);
+
+                    // Pendo Track: user data exported to CSV from PagerDuty API
+                    if (typeof pendo !== 'undefined') {
+                        try {
+                            var usersData = JSON.parse(xmlhttp.responseText);
+                            var userCount = usersData.users ? usersData.users.length : 0;
+                        } catch (e) {
+                            var userCount = 0;
+                        }
+                        pendo.track("user_data_exported", {
+                            user_count: userCount,
+                            subdomain: document.querySelector('[name="subdomain"]').value || ""
+                        });
+                    }
                 }
             };
             xmlhttp.open("GET", "https://api.pagerduty.com/users";
@@ -73,6 +87,14 @@
                 document.body.appendChild(downloadLink);
             }
             downloadLink.click();
+
+            // Pendo Track: user CSV file downloaded
+            if (typeof pendo !== 'undefined') {
+                pendo.track("user_csv_downloaded", {
+                    file_name: fileNameToSaveAs,
+                    file_size: textFileAsBlob.size
+                });
+            }
         }
     </script>
 </body>

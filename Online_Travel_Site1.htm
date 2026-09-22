@@ -326,7 +326,16 @@ document.getElementsByClassName("tablink")[0].click();
             data: eventObject
           })
             .done(function( msg ) {
-             // alert( "Hello: " + msg );
+             // Pendo Track: demo site triggered a PagerDuty incident
+             if (typeof pendo !== 'undefined') {
+               pendo.track("demo_incident_triggered", {
+                 demo_site_name: "apollo_gaming",
+                 error_description: "Live Core Service Failure",
+                 severity: "critical",
+                 dedup_key: dedupKey ? dedupKey.substring(0, 8) + "***" : "",
+                 customer_name: customerName || ""
+               });
+             }
           });
 
           alert('Error connecting to Apollo Gaming Core Services.')
