@@ -265,6 +265,19 @@ Name: <input type="text" name="customerName" id="customer-name" value="Stephanie
     //  dataType: "json"
     //});
 
+    // Pendo Track Event: incident_simulation_triggered
+    if (typeof pendo !== 'undefined') {
+      pendo.track("incident_simulation_triggered", {
+        demo_page: "best_buy",
+        simulation_scenario: "checkout_error",
+        service_key_source: serviceKey === "25c7766eede1452ca427a2cd12a6d457" ? "default" : "url_param",
+        dedup_key: dedupKey,
+        order_value: parseFloat(orderValue),
+        customer_name: customerName,
+        error_description: "Increased response time on Checkout page"
+      });
+    }
+
     $.ajax({
       method: "POST",
       url: "https://events.pagerduty.com/generic/2010-04-15/create_event.json",

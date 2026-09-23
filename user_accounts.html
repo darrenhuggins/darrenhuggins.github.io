@@ -25,6 +25,25 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     UsersJSON2CSV(xmlhttp.responseText);
+                    // Pendo Track Event: users_csv_exported
+                    if (typeof pendo !== 'undefined') {
+                        try {
+                            var usersData = JSON.parse(xmlhttp.responseText).users;
+                            var csvContent = document.getElementById("CSVtextarea").value;
+                            var csvRows = csvContent ? csvContent.split("\r\n").filter(function(r) { return r.length > 0; }).length : 0;
+                            pendo.track("users_csv_exported", {
+                                user_count: usersData ? usersData.length : 0,
+                                csv_row_count: csvRows,
+                                response_status: xmlhttp.status
+                            });
+                        } catch (e) {
+                            pendo.track("users_csv_exported", {
+                                user_count: 0,
+                                csv_row_count: 0,
+                                response_status: xmlhttp.status
+                            });
+                        }
+                    }
                 }
             };
             xmlhttp.open("GET", "https://api.pagerduty.com/users";
@@ -61,6 +80,17 @@
                 type: 'text/plain'
             });
             var fileNameToSaveAs = "users.csv";
+
+            // Pendo Track Event: users_csv_downloaded
+            if (typeof pendo !== 'undefined') {
+                var csvRows = textToWrite ? textToWrite.split("\r\n").filter(function(r) { return r.length > 0; }).length : 0;
+                pendo.track("users_csv_downloaded", {
+                    file_name: fileNameToSaveAs,
+                    file_size_bytes: textFileAsBlob.size,
+                    row_count: csvRows
+                });
+            }
+
             var downloadLink = document.createElement("a");
             downloadLink.download = fileNameToSaveAs;
             downloadLink.innerHTML = "Download File";

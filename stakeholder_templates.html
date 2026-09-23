@@ -56,7 +56,18 @@ Incident ID:<br>
             method: "POST",
             url: "https://api.pagerduty.com/incidents/"+incidentid+"/status_updates",
             data: messageObject,
-            success:function(resp){console.log(JSON.stringify(resp));}
+            success:function(resp){
+              console.log(JSON.stringify(resp));
+              // Pendo Track Event: stakeholder_notification_sent
+              if (typeof pendo !== 'undefined') {
+                pendo.track("stakeholder_notification_sent", {
+                  incident_id: incidentid,
+                  notification_interval_min: 15,
+                  message_template: "The Server is on Fire",
+                  response_status: "success"
+                });
+              }
+            }
           })
             .done(function( msg ) {
           });
