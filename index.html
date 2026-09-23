@@ -274,6 +274,18 @@ Name: <input type="text" name="customerName" id="customer-name" value="Stephanie
         //alert( "Data Saved: " + msg );
     });
 
+    // Pendo Track Event: demo checkout submitted
+    try {
+      if (typeof pendo !== 'undefined') {
+        pendo.track("demo_checkout_submitted", {
+          order_value: orderValue,
+          customer_name: customerName,
+          demo_page: "index",
+          service_key_present: String(!!serviceKey),
+          product_count: String(document.querySelectorAll('.product').length)
+        });
+      }
+    } catch (e) {}
 
 
   }

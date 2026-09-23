@@ -33,6 +33,7 @@ button:active {
 <script type="text/javascript">
 var counter = 0
 var timer;
+var counterStartTime = null;
 function countUP () {
  counter = counter + 140;//increment the counter by 140
  //display the new value in the div
@@ -40,6 +41,34 @@ function countUP () {
  document.getElementById("timer_container").style.fontSize = "90px";
  document.getElementById("timer_container").style.color = "red";
    }
+function startCounter() {
+ timer = setInterval("countUP()", 1000);
+ counterStartTime = new Date();
+ // Pendo Track Event: downtime cost counter started
+ try {
+   if (typeof pendo !== 'undefined') {
+     pendo.track("downtime_cost_counter_started", {
+       cost_increment_per_tick: "140",
+       tick_interval_ms: "1000",
+       demo_page: "DowntimeCost"
+     });
+   }
+ } catch (e) {}
+}
+function stopCounter() {
+ clearInterval(timer);
+ var durationSec = counterStartTime ? Math.round((new Date() - counterStartTime) / 1000) : 0;
+ // Pendo Track Event: downtime cost counter stopped
+ try {
+   if (typeof pendo !== 'undefined') {
+     pendo.track("downtime_cost_counter_stopped", {
+       final_cost_amount: String(counter),
+       duration_seconds: String(durationSec),
+       demo_page: "DowntimeCost"
+     });
+   }
+ } catch (e) {}
+}
 </script>
 
 </head>
@@ -50,8 +79,8 @@ function countUP () {
    <br>
       <div id="timer_container"><p1>$ 0</p1></div>
    <br>
-<button onclick='clearInterval(timer);'>Cart Service Up</button>
-<button onclick='timer=setInterval("countUP()", 1000 );'>Cart Service Down</button>
+<button onclick='stopCounter();'>Cart Service Up</button>
+<button onclick='startCounter();'>Cart Service Down</button>
 </div>
 </body>
 </html>

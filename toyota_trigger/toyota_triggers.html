@@ -33,6 +33,22 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<!-- Pendo Track Event helper for monitoring alert demos -->
+<script>
+function trackMonitoringAlert(alertName, alertType, eventSenderId) {
+  try {
+    if (typeof pendo !== 'undefined') {
+      pendo.track("demo_monitoring_alert_triggered", {
+        alert_name: alertName,
+        alert_type: alertType,
+        event_sender_id: eventSenderId,
+        demo_page: "toyota_triggers"
+      });
+    }
+  } catch (e) {}
+}
+</script>
+
 
 
 <script>
@@ -45,6 +61,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("Nagios Disk", "Nagios", "99ec5a79-36e1-4acd-88ce-ff5d5370960f");
                  alert('Generating Alerts')
           return url;
         }
@@ -60,6 +77,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("Nagios Packet Loss", "Nagios", "d2d03304-a313-44da-b818-4ff34cb71c67");
                  alert('Generating Alerts')
           return url;
         }
@@ -75,6 +93,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("Nagios CPU", "Nagios", "d381daa7-a7d6-432c-9ce6-a7522ad4b3bf");
                  alert('Generating Alerts')
           return url;
         }
@@ -89,6 +108,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("BGP Peer Connection", "BGP", "2eef7333-a4d6-4948-91e1-142e10f28fdb");
                  alert('Generating Alerts')
           return url;
         }
@@ -105,6 +125,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("SCOM Agent Service", "SCOM", "bcd64cba-4ce8-4883-8344-9ac5778d1e12");
                  alert('Generating Alerts')
           return url;
         }
@@ -120,6 +141,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("SCOM Maximo Storm", "SCOM", "eefb303d-bb10-44f6-857e-dba33091a000");
                  alert('Generating Alerts')
           return url;
         }
@@ -134,6 +156,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("Splunk Email LACP", "Splunk", "3878fe8f-c464-4460-aa5c-221d16bb57a7");
                  alert('Generating Alerts')
           return url;
         }
@@ -149,6 +172,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("Splunk Email PSU", "Splunk", "f688a649-487a-421b-9220-abf7e27a8c86");
                  alert('Generating Alerts')
           return url;
         }
@@ -163,6 +187,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("VROPS Link Down", "VROPS", "84a78c25-20c1-4fdd-b965-56f1b9a8d098");
                  alert('Generating Alerts')
           return url;
         }
@@ -178,6 +203,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("NetApp Volume 95%", "NetApp", "a5bec69e-7cd7-41fe-82a7-ffee8cfc820f");
                  alert('Generating Alerts')
           return url;
         }
@@ -192,6 +218,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("DCIM Device Alarm", "DCIM", "97d1f54f-11b0-4691-9436-bfae967d1560");
                  alert('Generating Alerts')
           return url;
         }
@@ -207,6 +234,7 @@
                  .done(function( msg ) {
                  });
 
+                 trackMonitoringAlert("SiteScan Loss of Communication", "SiteScan", "f13b96eb-fb15-4db8-b926-edab8b562265");
                  alert('Generating Alerts')
           return url;
         }
@@ -220,6 +248,17 @@
                  })
                  .done(function( msg ) {
                  });
+
+                 // Pendo Track Event: mass alert storm triggered
+                 try {
+                   if (typeof pendo !== 'undefined') {
+                     pendo.track("demo_mass_alert_storm_triggered", {
+                       event_sender_id: "7f465d39-3513-4e43-95dc-9de7dc89451e",
+                       demo_page: "toyota_triggers",
+                       total_alert_types: "12"
+                     });
+                   }
+                 } catch (e) {}
 
                  alert('Generating Alerts')
           return url;

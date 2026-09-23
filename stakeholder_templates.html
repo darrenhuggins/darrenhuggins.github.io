@@ -60,6 +60,18 @@ Incident ID:<br>
           })
             .done(function( msg ) {
           });
+
+          // Pendo Track Event: stakeholder update sent
+          try {
+            if (typeof pendo !== 'undefined') {
+              pendo.track("stakeholder_update_sent", {
+                incident_id: incidentid || "",
+                update_interval_minutes: "15",
+                message_template: "The Server is on Fire"
+              });
+            }
+          } catch (e) {}
+
 		  window.prompt('Enter Incident ID.')
           alert('15 Minute Stakeholder Notification Sent .')
           return false;

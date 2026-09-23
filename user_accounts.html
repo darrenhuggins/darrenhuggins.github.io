@@ -25,6 +25,17 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     UsersJSON2CSV(xmlhttp.responseText);
+
+                    // Pendo Track Event: users CSV exported
+                    try {
+                        if (typeof pendo !== 'undefined') {
+                            var usersData = JSON.parse(xmlhttp.responseText);
+                            pendo.track("users_csv_exported", {
+                                user_count: String((usersData.users || []).length),
+                                subdomain: document.querySelector('[name="subdomain"]').value || ""
+                            });
+                        }
+                    } catch (e) {}
                 }
             };
             xmlhttp.open("GET", "https://api.pagerduty.com/users";
@@ -72,6 +83,19 @@
                 downloadLink.style.display = "none";
                 document.body.appendChild(downloadLink);
             }
+
+            // Pendo Track Event: users CSV downloaded
+            try {
+                if (typeof pendo !== 'undefined') {
+                    var rowCount = textToWrite ? textToWrite.split("\n").filter(function(l) { return l.trim(); }).length - 1 : 0;
+                    pendo.track("users_csv_downloaded", {
+                        file_name: fileNameToSaveAs,
+                        file_size_bytes: String(textFileAsBlob.size),
+                        row_count: String(Math.max(rowCount, 0))
+                    });
+                }
+            } catch (e) {}
+
             downloadLink.click();
         }
     </script>

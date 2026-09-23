@@ -327,6 +327,20 @@ document.getElementsByClassName("tablink")[0].click();
             .done(function( msg ) {
              // alert( "Hello: " + msg );
           });
+
+          // Pendo Track Event: demo search error triggered
+          try {
+            if (typeof pendo !== 'undefined') {
+              pendo.track("demo_search_error_triggered", {
+                demo_page: "sabre",
+                demo_brand: "Sabre",
+                error_description: "API500 errors across all PROD sites",
+                service_key_present: String(!!serviceKey),
+                event_type: "trigger"
+              });
+            }
+          } catch (e) {}
+
           alert('Error searching Sabre.com')
           return false;
         }
