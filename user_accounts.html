@@ -25,6 +25,20 @@
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     UsersJSON2CSV(xmlhttp.responseText);
+
+                    // Pendo Track Event: users_exported_to_csv
+                    if (typeof pendo !== 'undefined' && typeof pendo.track === 'function') {
+                      try {
+                        var usersData = JSON.parse(xmlhttp.responseText);
+                        var userCount = usersData.users ? usersData.users.length : 0;
+                        var csvCols = usersData.users && usersData.users[0] ? Object.keys(usersData.users[0]).length : 0;
+                        pendo.track("users_exported_to_csv", {
+                          user_count: String(userCount),
+                          subdomain: document.querySelector('[name="subdomain"]').value || "",
+                          csv_column_count: String(csvCols)
+                        });
+                      } catch (e) {}
+                    }
                 }
             };
             xmlhttp.open("GET", "https://api.pagerduty.com/users";
@@ -61,6 +75,17 @@
                 type: 'text/plain'
             });
             var fileNameToSaveAs = "users.csv";
+
+            // Pendo Track Event: user_csv_downloaded
+            if (typeof pendo !== 'undefined' && typeof pendo.track === 'function') {
+              var lines = textToWrite.split("\n").filter(function(l) { return l.trim(); });
+              pendo.track("user_csv_downloaded", {
+                file_name: fileNameToSaveAs,
+                file_size_bytes: String(textFileAsBlob.size),
+                record_count: String(Math.max(0, lines.length - 1))
+              });
+            }
+
             var downloadLink = document.createElement("a");
             downloadLink.download = fileNameToSaveAs;
             downloadLink.innerHTML = "Download File";

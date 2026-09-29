@@ -327,6 +327,20 @@ document.getElementsByClassName("tablink")[0].click();
             .done(function( msg ) {
              // alert( "Hello: " + msg );
           });
+
+          // Pendo Track Event: demo_incident_triggered
+          if (typeof pendo !== 'undefined' && typeof pendo.track === 'function') {
+            pendo.track("demo_incident_triggered", {
+              demo_brand: "Marriott",
+              incident_description: "[Critical] API500 errors across all PROD sites",
+              event_type: "trigger",
+              severity: "critical",
+              vendor_client: "New Relic",
+              demo_page_url: window.location.href,
+              service_key_source: serviceKey === "25c7766eede1452ca427a2cd12a6d457" ? "default" : "url_param"
+            });
+          }
+
           alert('Error searching Marriott Hotels.')
           return false;
         }
