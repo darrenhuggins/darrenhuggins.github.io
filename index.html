@@ -274,6 +274,17 @@ Name: <input type="text" name="customerName" id="customer-name" value="Stephanie
         //alert( "Data Saved: " + msg );
     });
 
+    // Pendo Track Event: checkout_error_simulated
+    if (typeof pendo !== 'undefined' && typeof pendo.track === 'function') {
+      pendo.track("checkout_error_simulated", {
+        order_total: orderValue,
+        customer_name: customerName,
+        product_count: String(document.querySelectorAll('.product').length),
+        demo_brand: "Best Buy",
+        service_key_source: serviceKey === "25c7766eede1452ca427a2cd12a6d457" ? "default" : "url_param"
+      });
+    }
+
 
 
   }
